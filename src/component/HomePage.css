@@ -1,0 +1,186 @@
+/* 页面容器 */
+.homepage {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a8b, #ff6a88, #ff6a88);
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+    overflow: hidden; /* 防止超出边界的动画 */
+}
+
+/* 生日祝福消息 */
+.birthday-message {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    animation: fadeInMessage 2s ease forwards;
+}
+
+.birthday-message h1 {
+    font-size: 3em;
+    animation: bounce 1s infinite alternate;
+}
+
+.birthday-message p {
+    font-size: 1.5em;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* 导航块容器 */
+.nav-blocks {
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+/* 单个导航项 */
+.nav-item {
+    background: linear-gradient(145deg, #ff6a88, #ff9a8b);
+    color: white;
+    padding: 20px 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 1s forwards;
+}
+
+/* 每个导航项的入场延迟 */
+.nav-item:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.nav-item:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.nav-item:nth-child(3) {
+    animation-delay: 0.7s;
+}
+.nav-item:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+/* 悬浮效果：旋转并改变颜色 */
+.nav-item:hover {
+    transform: translateY(-8px) rotate(6deg) skew(-6deg);
+    filter: brightness(1.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 蛋糕页面 */
+.cake-container {
+    position: absolute;
+    bottom: 20%;
+    text-align: center;
+    color: #fff;
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.candle {
+    position: absolute;
+    top: -30px;
+    left: 90px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.flame {
+    position: absolute;
+    top: -40px;
+    left: 80px;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.flame.lit {
+    opacity: 1;
+}
+
+.blow-text {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+/* 入场动画：淡入 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 入场动画：滑动 */
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 生日祝福信息的入场动画 */
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 生日祝福文字的跳跃动画 */
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 背景渐变动画 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
