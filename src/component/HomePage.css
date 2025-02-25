@@ -8,7 +8,7 @@
     background: linear-gradient(135deg, #ff9a8b, #ff6a88, #ff6a88);
     background-size: 300% 300%;
     animation: gradientMove 6s ease infinite;
-    overflow: hidden; /* 防止超出边界的动画 */
+    overflow: hidden;
 }
 
 /* 生日祝福消息 */
@@ -63,16 +63,69 @@
         background-position: 0% 50%;
     }
 }
-
-.birthday-message h1 {
-    font-size: 3em;
-    animation: bounce 1s infinite alternate;
+/* 气球容器 */
+.balloon-container {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
 }
 
-.birthday-message p {
-    font-size: 1.5em;
-    margin-top: 10px;
-    opacity: 0.9;
+/* 单个气球样式 */
+.balloon {
+    font-size: 2.5em;
+    cursor: pointer;
+    animation: float 3s ease-in infinite;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 气球漂浮动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 气球点击后的效果 */
+.balloon:active {
+    transform: scale(0.8);
+}
+
+/* 点击气球后的消失和漂浮效果 */
+@keyframes floatAway {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200px) scale(0.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-400px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 背景渐变动画 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* 导航块容器 */

@@ -4,38 +4,47 @@
  * @date 2025/2/23 23:29
  */
 import './HomePage.css';
+import {useState} from "react";
 
 const HomePage = () => {
+    const [balloons, setBalloons] = useState([1, 2, 3, 4, 5,6,7,8,9,10]); // 初始气球的数量
+
+    // 点击气球后的动画
+    const handleBalloonClick = (index: number) => {
+        const newBalloons = balloons.filter((_, i) => i !== index); // 点击后移除气球
+        setBalloons(newBalloons);
+    };
+
     return (
         <div className="homepage">
             <div className="birthday-message">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1800 300"  /* 调整viewBox，增加高度以适应两行文本 */
+                    viewBox="0 0 1800 300"
                     className="birthday-svg"
                 >
                     <text
-                        x="50%"  /* 水平居中 */
-                        y="80"   /* 调整y值来控制文本的垂直位置 */
+                        x="50%"
+                        y="80"
                         fill="none"
                         stroke="#fff"
                         strokeWidth="3"
                         strokeDasharray="1000"
                         strokeDashoffset="1000"
-                        textAnchor="middle"  /* 水平居中 */
+                        textAnchor="middle"
                         className="birthday-text"
                     >
                         生日快乐！
                     </text>
                     <text
-                        x="50%"  /* 水平居中 */
-                        y="180"  /* 第二行文字的y值更大，放置在下一行 */
+                        x="50%"
+                        y="180"
                         fill="none"
                         stroke="#fff"
                         strokeWidth="3"
                         strokeDasharray="1000"
                         strokeDashoffset="1000"
-                        textAnchor="middle"  /* 水平居中 */
+                        textAnchor="middle"
                         className="birthday-text"
                     >
                         愿你在每一个季节里都收获满满的幸福与爱！
@@ -48,6 +57,19 @@ const HomePage = () => {
                 <div className="nav-item">cake</div>
                 <div className="nav-item">祝福</div>
                 <div className="nav-item">关于</div>
+            </div>
+
+            {/* 底部气球交互效果 */}
+            <div className="balloon-container">
+                {balloons.map((_, index) => (
+                    <div
+                        key={index}
+                        className="balloon"
+                        onClick={() => handleBalloonClick(index)}
+                    >
+                        🎈
+                    </div>
+                ))}
             </div>
         </div>
     );
