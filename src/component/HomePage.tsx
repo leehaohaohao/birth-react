@@ -5,8 +5,13 @@
  */
 import './HomePage.css';
 import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+    const navigate = useNavigate(); // 获取导航函数
+    const handleHeyHeyClick = () => {
+        navigate('/heyhey'); // 跳转到嘿嘿页面
+    };
     const [balloons, setBalloons] = useState([1, 2, 3, 4, 5,6,7,8,9,10]); // 初始气球的数量
 
     // 点击气球后的动画
@@ -53,7 +58,7 @@ const HomePage = () => {
             </div>
 
             <div className="nav-blocks">
-                <div className="nav-item">嘿嘿</div>
+                <div className="nav-item" onClick={handleHeyHeyClick}>嘿嘿</div>
                 <div className="nav-item">cake</div>
                 <div className="nav-item">祝福</div>
                 <div className="nav-item">关于</div>

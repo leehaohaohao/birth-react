@@ -1,0 +1,45 @@
+.heyhey-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #a2c2f4, #b1d4e0, #b8d4e0);
+    background-size: 300% 300%;
+    animation: gradientMove 6s ease infinite;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.message {
+    font-size: 2em;
+    text-align: center;
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.char {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

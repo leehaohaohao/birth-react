@@ -10,7 +10,18 @@
     animation: gradientMove 6s ease infinite;
     overflow: hidden;
 }
-
+/* 毛玻璃效果 */
+.homepage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* 半透明白色 */
+    backdrop-filter: blur(1px); /* 这里的blur值可以调整，10px只是一个例子 */
+    z-index: -1; /* 使毛玻璃效果位于内容的背后 */
+}
 /* 生日祝福消息 */
 .birthday-message {
     position: absolute;
