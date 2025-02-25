@@ -17,8 +17,51 @@
     top: 20%;
     text-align: center;
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Brush Script MT', cursive;
+    width: 80%;
+}
+
+/* SVG动画：描线效果 */
+.birthday-svg {
+    width: 80%;
+    height: auto;
     animation: fadeInMessage 2s ease forwards;
+}
+
+/* 增大字体并设置艺术字体 */
+.birthday-text {
+    font-size: 5em;  /* 增大字体 */
+    font-family: 'Brush Script MT', cursive;
+    animation: strokeAnimation 4s ease infinite;  /* 无限循环动画 */
+}
+
+/* 动画：描边逐渐显示 */
+@keyframes strokeAnimation {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+    50% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+}
+
+/* 背景渐变动画 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .birthday-message h1 {
