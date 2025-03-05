@@ -3,18 +3,21 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #a2c2f4, #b1d4e0, #b8d4e0);
+    background: linear-gradient(135deg, #4c9bff, #7ac7f3, #a4d7ff);
     background-size: 300% 300%;
     animation: gradientMove 6s ease infinite;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    color: #fff;
+    font-family: 'Georgia', serif; /* 优雅的字体 */
     overflow: hidden;
+    padding: 0 20px; /* 给左右两边留点空间，防止文字靠边 */
 }
 
 .message {
-    font-size: 2em;
+    font-size: 2.5em; /* 适当增大字体 */
     text-align: center;
+    line-height: 1.5; /* 调整行间距，使得文字不会太拥挤 */
     white-space: nowrap; /* 防止文字换行 */
+    word-wrap: break-word; /* 防止超出范围的长词折行 */
 }
 
 .char {
