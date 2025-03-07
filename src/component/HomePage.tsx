@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom';
 const HomePage = () => {
     const navigate = useNavigate();
 
-    const handleHeyHeyClick = () => {
-        navigate('/heyhey');
+    const handlerScrollPhotoPageClick = () => {
+        navigate('/scroll');
     };
-
+    const handlerCakePageClick = () =>{
+        navigate('/cake');
+    };
     return (
         <div className="homepage">
             <div className="birthday-message">
@@ -77,8 +79,8 @@ const HomePage = () => {
             </div>
 
             <div className="nav-blocks">
-                <div className="nav-item" onClick={handleHeyHeyClick}>嘿嘿</div>
-                <div className="nav-item">🎂 cake</div>
+                <div className="nav-item" onClick={handlerScrollPhotoPageClick}>嘿嘿</div>
+                <div className="nav-item" onClick={handlerCakePageClick}>🎂 cake</div>
                 <div className="nav-item">🎁 祝福</div>
                 <div className="nav-item">💌 关于</div>
             </div>

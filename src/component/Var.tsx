@@ -5,9 +5,9 @@
  */
 
 import { useEffect, useState } from "react";
-import './HeyHeyPage.css';
+import './Var.css';
 
-const HeyHeyPage = () => {
+const Var = () => {
     const messages = [
         " 嘿嘿，终于到了这个页面！",
         " 这里有一段神秘的文字等待你来看~",
@@ -60,5 +60,5 @@ const HeyHeyPage = () => {
     );
 };
 
-export default HeyHeyPage;
+export default Var;
 

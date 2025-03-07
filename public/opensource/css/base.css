@@ -3,14 +3,13 @@
 *::before {
 	box-sizing: border-box;
 }
-
 :root {
 	font-size: 16px;
-	--color-text: #fff;
-	--color-bg: #000;
-	--color-link: #fff;
-	--color-link-hover: #907030;
-	--color-title: #907030;
+	--color-text: #f5f5f5; /* 更柔和的白色 */
+	--color-bg: linear-gradient(to left, #a8edea 0%, #fed6e3 100%);
+	--color-link: #00bcd4; /* 清新的蓝色 */
+	--color-link-hover: #ff5722; /* 橙色悬浮效果 */
+	--color-title: #f8bbd0; /* 柔和的粉色 */
 	--perspective: 1500px;
 	--grid-item-ratio: 1.5;
 	--grid-width: 100%;
@@ -20,10 +19,12 @@
 	--grid-inner-scale: 1;
 }
 
+
+
 body {
 	margin: 0;
 	color: var(--color-text);
-	background-color: var(--color-bg);
+	background: var(--color-bg);
 	font-family: "moret-variable", serif;
 	font-variation-settings: "ital" 0, "wght" 300;
 	-webkit-font-smoothing: antialiased;
@@ -247,7 +248,30 @@ body #cdawrap {
 	top: 100%;
 	left: 50%;
 }
+.scroll-arrow {
+	margin-right: 10px;
+	width: 40px;
+	height: 40px;
+}
 
+.arrow-path {
+	stroke-dasharray: 30; /* 这个值控制箭头路径的长度 */
+	stroke-dashoffset: 30; /* 初始时路径是隐藏的 */
+	animation: drawArrow 2s ease-in-out forwards infinite;
+}
+
+/* 描边动画 */
+@keyframes drawArrow {
+	0% {
+		stroke-dashoffset: 30; /* 完全隐藏路径 */
+	}
+	50% {
+		stroke-dashoffset: 0; /* 路径完全描绘出来 */
+	}
+	100% {
+		stroke-dashoffset: 30; /* 路径再次隐藏 */
+	}
+}
 .card-wrap {
 	margin-top: 5vh;
 	display: grid;
