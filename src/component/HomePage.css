@@ -1,4 +1,4 @@
-/* 页面整体样式 */
+/* 背景动画 */
 .homepage {
     position: relative;
     height: 100vh;
@@ -7,11 +7,128 @@
     align-items: center;
     background: linear-gradient(135deg, #ff9a8b, #ff6a88, #ff99cc);
     background-size: 300% 300%;
-    animation: gradientMove 6s ease infinite;
+    animation: gradientMove 8s ease infinite;
     overflow: hidden;
 }
 
-/* 生日祝福信息 */
+/* 心电图动画 */
+.heartbeat-wave {
+    animation: heartbeat 6s ease-in-out infinite;
+    stroke-dasharray: 1800;  /* 路径总长度 */
+    stroke-dashoffset: 1800; /* 初始路径不可见 */
+}
+
+/* 心电图动画，从左到右绘制 */
+@keyframes heartbeat {
+    0% {
+        stroke-dashoffset: 1800;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 1800;
+    }
+}
+
+/* 背景爱心容器 */
+.hearts-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* 防止爱心遮挡点击事件 */
+    z-index: 0; /* 确保爱心在背景层 */
+}
+
+/* 单个爱心样式 */
+.heart-bg {
+    position: absolute;
+    opacity: 1; /* 初始可见 */
+    animation: drawHeart 3s ease-in-out infinite; /* 动画循环 */
+}
+
+/* 路径绘制动画 */
+@keyframes drawHeart {
+    0% {
+        stroke-dashoffset: 100; /* 初始路径不可见 */
+    }
+    50% {
+        stroke-dashoffset: 0; /* 路径完全可见 */
+    }
+    100% {
+        stroke-dashoffset: 100; /* 路径消失 */
+    }
+}
+/* 添加漂浮的光点 */
+.homepage::before {
+    content: "";
+    position: absolute;
+    width: 120vw;
+    height: 120vh;
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, rgba(255, 255, 255, 0) 70%);
+    animation: floatingGlow 10s infinite alternate ease-in-out;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ⭐ 星星背景 */
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 单个星星样式 */
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 6px white;
+    animation: twinkle 3s infinite alternate ease-in-out, floatStars 8s infinite ease-in-out;
+}
+
+/* 随机调整星星大小 & 透明度 */
+.stars-container .star:nth-child(10n) { width: 2px; height: 2px; opacity: 0.5; animation-duration: 2s; }
+.stars-container .star:nth-child(5n) { width: 4px; height: 4px; opacity: 0.7; animation-duration: 4s; }
+.stars-container .star:nth-child(3n) { width: 5px; height: 5px; opacity: 0.9; animation-duration: 5s; }
+
+/* 随机分布星星 */
+.stars-container .star:nth-child(1) { top: 10%; left: 15%; }
+.stars-container .star:nth-child(2) { top: 30%; left: 45%; }
+.stars-container .star:nth-child(3) { top: 60%; left: 70%; }
+.stars-container .star:nth-child(4) { top: 80%; left: 20%; }
+.stars-container .star:nth-child(5) { top: 50%; left: 90%; }
+.stars-container .star:nth-child(6) { top: 75%; left: 60%; }
+.stars-container .star:nth-child(7) { top: 40%; left: 80%; }
+.stars-container .star:nth-child(8) { top: 20%; left: 35%; }
+.stars-container .star:nth-child(9) { top: 90%; left: 50%; }
+.stars-container .star:nth-child(10) { top: 5%; left: 65%; }
+/* 可以继续增加更多星星 */
+
+/* ✨ 星星闪烁动画 */
+@keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.2; transform: scale(0.8); }
+}
+
+/* 🌌 星星浮动动画 */
+@keyframes floatStars {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* 🎉 生日祝福信息 */
 .birthday-message {
     position: absolute;
     top: 15%;
@@ -19,7 +136,19 @@
     width: 80%;
 }
 
-/* SVG 动画 */
+/* 光点漂浮 */
+@keyframes floatingGlow {
+    0% {
+        transform: translateY(-10px) translateX(-10px) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(10px) translateX(10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* 🎆 生日 SVG 动画 */
 .birthday-svg {
     width: 90%;
     height: auto;
@@ -30,68 +159,37 @@
     font-size: 5em;
     font-family: 'Brush Script MT', cursive;
     stroke: #ffffff;
-    fill: url(#gradient-text); /* 渐变色 */
+    fill: url(#gradient-text);
     stroke-width: 3;
     stroke-linecap: round;
     stroke-dasharray: 1200;
     stroke-dashoffset: 1200;
-    animation: strokeAnimation 6s ease-in-out infinite,
-    glowFadeOut 6s ease-in-out infinite;
+    animation: strokeAnimation 6s ease-in-out infinite, glowFadeOut 6s ease-in-out infinite;
 }
 
-
-
+/* ✏️ 文字描边动画 */
 @keyframes strokeAnimation {
-    0% {
-        stroke-dasharray: 1200;
-        stroke-dashoffset: 1200;
-        opacity: 0;
-        text-shadow: 0 0 10px #ffdd94, 0 0 20px #ff9a8b;
-    }
-    20% {
-        opacity: 1; /* 轻微浮现，避免突兀 */
-    }
-    60% {
-        stroke-dashoffset: 0; /* 逐步绘制 */
-        opacity: 1;
-    }
-    80% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-    100% {
-        stroke-dashoffset: 1200; /* 再次消失 */
-        text-shadow: 0 0 2px #ff9a8b;
-        opacity: 0;
-    }
+    0% { stroke-dashoffset: 1200; opacity: 0; }
+    20% { opacity: 1; }
+    60% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 1200; opacity: 0; }
 }
 
-
-/* 文字跳跃效果 */
-@keyframes bounceText {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-8px);
-    }
+/* 🎈 文字入场渐变 */
+@keyframes fadeInMessage {
+    0% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+    50% { opacity: 0.8; transform: translateY(-10px) scale(1.05); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 
 /* 背景渐变动画 */
 @keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* 导航项容器 */
+/* 📌 导航项容器 */
 .nav-blocks {
     display: flex;
     gap: 40px;
@@ -103,7 +201,7 @@
     animation: fadeIn 1.5s forwards;
 }
 
-/* 导航项样式 */
+/* 📍 导航项 */
 .nav-item {
     background: linear-gradient(145deg, #ff6a88, #ff9a8b);
     color: white;
@@ -120,39 +218,22 @@
     animation: slideIn 1s forwards;
 }
 
-/* 导航项悬浮效果 */
+/* 🏮 导航项悬浮 */
 .nav-item:hover {
     transform: translateY(-10px) rotate(3deg);
     filter: brightness(1.2);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* 入场动画 */
+/* 🚀 入场动画 */
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
-/* 导航项入场动画 */
+/* 📜 导航项入场 */
 @keyframes slideIn {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* 祝福文字渐入 */
-@keyframes fadeInMessage {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { transform: translateY(30px) rotate(-3deg); opacity: 0; }
+    60% { transform: translateY(-5px) rotate(3deg); opacity: 0.9; }
+    100% { transform: translateY(0) rotate(0); opacity: 1; }
 }

@@ -17,6 +17,41 @@ const HomePage = () => {
     };
     return (
         <div className="homepage">
+            <div className="hearts-background">
+                {Array.from({length: 25}).map((_, i) => {
+                    const size = 20 + Math.random() * 20; // 随机大小，范围在 40px 到 80px
+                    const rotation = Math.random() * 360; // 随机旋转角度，范围在 0° 到 360°
+                    return (
+                        <svg
+                            key={i}
+                            className="heart-bg"
+                            style={{
+                                left: `${Math.random() * 100}%`, // 随机水平位置
+                                top: `${Math.random() * 100}%`, // 随机垂直位置
+                                animationDelay: `${Math.random() * 2}s`, // 随机动画延迟
+                                width: `${size}px`, // 随机大小
+                                height: `${size}px`,
+                                transform: `rotate(${rotation}deg)`, // 随机旋转角度
+                            }}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 32 32"
+                        >
+                            <path
+                                d="M16 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"
+                                fill="transparent" /* 透明填充 */
+                                stroke="#ff6b6b" /* 红色描边 */
+                                strokeWidth="2" /* 描边粗细 */
+                                strokeDasharray="100" /* 路径总长度 */
+                            />
+                        </svg>
+                    );
+                })}
+            </div>
+            <div className="stars-container">
+                {Array.from({length: 50}).map((_, i) => (
+                    <span key={i} className="star"></span>
+                ))}
+            </div>
             <div className="birthday-message">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -24,16 +59,11 @@ const HomePage = () => {
                     className="birthday-svg"
                 >
                     <defs>
-                        {/* 文字渐变色 */}
                         <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#fff6b7"/>
-                            {/* 亮黄色 */}
                             <stop offset="50%" stopColor="#ffdd94"/>
-                            {/* 金色 */}
                             <stop offset="100%" stopColor="#f8a488"/>
-                            {/* 橙粉色 */}
                         </linearGradient>
-                        {/* 文字发光效果 */}
                         <filter id="glow">
                             <feGaussianBlur stdDeviation="4.5" result="coloredBlur"/>
                             <feMerge>
@@ -43,7 +73,6 @@ const HomePage = () => {
                         </filter>
                     </defs>
 
-                    {/* 生日快乐 文字 */}
                     <text
                         x="50%"
                         y="120"
@@ -59,7 +88,6 @@ const HomePage = () => {
                         生日快乐！
                     </text>
 
-                    {/* 祝福语 文字 */}
                     <text
                         x="50%"
                         y="250"
@@ -74,7 +102,6 @@ const HomePage = () => {
                     >
                         愿你的世界充满爱与美好 ✨
                     </text>
-
                 </svg>
             </div>
 
@@ -89,9 +116,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-
-
-
-
