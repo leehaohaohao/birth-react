@@ -6,8 +6,9 @@
 :root {
 	font-size: 16px;
 	--color-text: #f5f5f5; /* 更柔和的白色 */
-	--color-bg: linear-gradient(45deg, #a8edea, #fed6e3, #ff9a9e);
-
+	--color-bg: linear-gradient(45deg, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+	background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+	background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
 	--color-link: #00bcd4; /* 清新的蓝色 */
 	--color-link-hover: #ff5722; /* 橙色悬浮效果 */
 	--color-title: #f8bbd0; /* 柔和的粉色 */

@@ -17,6 +17,20 @@ const HomePage = () => {
     };
     return (
         <div className="homepage">
+            <div className="mask">
+                <svg
+                    className="transparent-heart"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                >
+                    <path
+                        d="M16 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"
+                        fill="transparent"
+                        stroke="#ff6b6b"
+                        strokeWidth="2"
+                    />
+                </svg>
+            </div>
             <div className="hearts-background">
                 {Array.from({length: 25}).map((_, i) => {
                     const size = 20 + Math.random() * 20; // 随机大小，范围在 40px 到 80px
